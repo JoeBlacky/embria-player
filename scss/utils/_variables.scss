@@ -1,0 +1,44 @@
+/* Color Constants ======================================================================== */
+    $ORANGE_COLOR: #F7921C;
+ /* Colors ================================================================================ */
+    $attentionColor: $ORANGE_COLOR;
+    $primaryDarkColor:   #252525;
+    $errorColor:         #D34B52;
+    $successColor:       #06B86B;
+    $primaryColorDark:   #0288D1;
+    $primaryColor:       #03A9F4;
+    $primaryColorLight:  #B3E5FC;
+    $primaryColorText:   #FFF;
+    $accentColor:        #FF5722;
+    $primaryTextColor:   #212121;
+    $secondaryTextColor: #727272;
+    $dividerColor:       #B6B6B6;
+/* Social Colors ========================================================================= */
+    $vk: #45668E;
+    $google-plus: #DC4E41;
+    $bitbucket: #205081;
+    $github: #4183C4;
+/* Fonts ================================================================================= */
+    $headingsFont: 'KellySlab-Regular', sans-serif;
+    $primaryFont: 'KelsonSans', sans;
+    $iconsFont: 'Fontello';
+    $iconClass: '.icn';
+/* Buttons =============================================================================== */
+    $buttonClass: '.btn';
+/* Variables Widths ====================================================================== */
+    $mainWidth: 960px;
+    $maxWidth: 1920px;
+    $minWidth: 320px;
+/* Transition Speed ====================================================================== */
+    $fastSpeed: .2s;
+    $normalSpeed: .3s;
+    $slowSpeed: .5s;
+/* Indents =============================================================================== */
+    $mainIndent: 20px;
+/* Socials Block ========================================================================= */
+    $socialsBlockClass: '.socials';
+    $socialIconWidth: 50px;
+    $socialIconHeight: $socialIconWidth;
+/* Ajax Loader =========================================================================== */
+    $ajaxLoader: url(../img/ajaxLoader.gif);
+/* ======================================================================================= */

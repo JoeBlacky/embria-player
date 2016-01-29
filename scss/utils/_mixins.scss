@@ -1,0 +1,84 @@
+/* Mixins ================================================================================ */
+    @mixin inline-block($align){
+        display: inline-block;
+        vertical-align: $align;
+    }
+    @mixin transition($duration){
+        -webkit-transition: all $duration ease;
+        -ms-transition: all $duration ease;
+        transition: all $duration ease;
+    }
+    @mixin custom-transition($option, $duration){
+        -webkit-transition: $option $duration ease;
+        -ms-transition: $option $duration ease;
+        transition: $option $duration ease;
+    }
+    @mixin transition-delay($delay){
+        -webkit-transition-delay: $delay;
+        -ms-transition-delay: $delay;
+        transition-delay: $delay;
+    }
+    @mixin border-radius($val){
+        -webkit-border-radius: ($val);
+        -moz-border-radius: ($val);
+        -ms-border-radius: ($val);
+        border-radius: ($val);
+    }
+    @mixin box-shadow($val...){
+        -webkit-box-shadow: $val;
+        -moz-box-shadow: $val;
+        box-shadow: $val;
+    }
+    @mixin transform-origin ($origin) {
+        -webkit-transform-origin: $origin;
+        -moz-transform-origin: $origin;
+        transform-origin: $origin;
+    }
+    @mixin transform($transforms) {
+        -webkit-transform: $transforms;
+        -moz-transform: $transforms;
+        transform: $transforms;
+    }
+    @mixin rotate ($deg) {
+        @include transform(rotate(#{$deg}deg));
+    }
+    @mixin scale($scale) {
+        @include transform(scale($scale));
+    }
+    @mixin translate ($x, $y) {
+        @include transform(translate($x, $y));
+    }
+    @mixin skew ($x, $y) {
+        @include transform(skew(#{$x}deg, #{$y}deg));
+    }
+    @mixin animation($animate...) {
+        $max: length($animate);
+        $animations: '';
+
+        @for $i from 1 through $max {
+            $animations: #{$animations + nth($animate, $i)};
+
+            @if $i < $max {
+                $animations: #{$animations + ", "};
+            }
+        }
+        -webkit-animation: $animations;
+        -moz-animation:    $animations;
+        -o-animation:      $animations;
+        animation:         $animations;
+    }
+    @mixin keyframes($animationName) {
+        @-webkit-keyframes #{$animationName} {
+            @content;
+        }
+        @-moz-keyframes #{$animationName} {
+            @content;
+        }
+        @-o-keyframes #{$animationName} {
+            @content;
+        }
+        @keyframes #{$animationName} {
+            @content;
+        }
+    }
+/* ======================================================================================= */

@@ -1,0 +1,28 @@
+/* Common ================================================================================ */
+  #{$buttonClass}{
+    padding: $mainIndent/2 $mainIndent;
+    font: 16px/20px $headingsFont;
+    text-transform: uppercase;
+    color: $successColor;
+    background: transparent;
+    border: 1px dashed $successColor;
+    outline: 0;
+    cursor: pointer;
+    @extend %resetAppearence;
+    @extend %inline-block-middle;
+    @extend %transition-normal-speed;
+    @include border-radius(0);
+    &:hover,
+    &:focus{
+      color: $primaryColorText;
+      background: $successColor;
+    }
+    &-warn{
+      color: $accentColor;
+      border-color: $accentColor;
+      &:hover{
+        background: $accentColor;
+      }
+    }
+  }
+/* ======================================================================================= */

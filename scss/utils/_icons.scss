@@ -1,0 +1,45 @@
+/* Icons ================================================================================= */
+  #{$iconClass}{
+    &::before,
+    &::after{
+      display: block;
+      font-family: $iconsFont;
+      @extend %transition-normal-speed;
+    }
+    &.mail{
+      &::before{
+        content: '\E800';
+      }
+    }
+    &.vk{
+      &::before{
+        content: '\E801';
+      }
+    }
+    &.google-plus{
+      &::before{
+        content: '\E802';
+      }
+    }
+    &.bucket{
+      &::before{
+        content: '\E803';
+      }
+    }
+    &.git{
+      &::before{
+        content: '\E804';
+      }
+    }
+    &.menu{
+      &::before{
+        content: '\E805';
+      }
+    }
+    &.arrow-down{
+      &::before{
+        content: '\E806';
+      }
+    }
+  }
+/* ======================================================================================= */
