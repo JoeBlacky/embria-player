@@ -22,6 +22,141 @@
     font-family: $headingsFont;
     font-weight: 400;
     text-transform: uppercase;
+    color: $primaryTextColor;
+  }
+  .pleer{
+    position: relative;
+    height: 100vh;
+    min-width: $minWidth;
+    min-height: $minWidth;
+    margin: 0 auto;
+    background: #FFF;
+    font-size: 0;
+    text-align: center;
+    background: url(../img/poster.jpg) no-repeat center center / contain, #000;
+    overflow: hidden;
+    &::before{
+      content: '';
+      width: 0;
+      height: 100%;
+      @extend %inline-block-middle;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      background: rgba(#FFF, .5);
+      z-index: 0;
+      @extend %overlay;
+      @include custom-transition(background-color, $normalSpeed);
+    }
+    &.loading{
+      &::after{
+        background: #FFF url(../img/preloader.gif) no-repeat center center;
+      }
+      .controls{
+        opacity: .9;
+        &-play{
+          .progress{
+          &::after{
+              width: 10%;
+              @include custom-transition(width, 3s);
+            }
+          }
+        }
+      }
+    }
+  }
+  .controls{
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: #232227;
+    @include translate(0,0);
+    @include box-shadow(0 0 0 1px #000);
+    @extend %transition-normal-speed;
+    &-block{
+      position: relative;
+      padding: $mainIndent $mainIndent $mainIndent $mainIndent*2;
+    }
+    &-play{
+      width: 70%;
+      padding-right: $mainIndent*4;
+    }
+    &-volume{
+      width: 30%;
+    }
+    .icn{
+      position: absolute;
+      left: $mainIndent/2;
+      top: $mainIndent/1.3333;
+      width: $mainIndent;
+      height: $mainIndent;
+      cursor: pointer;
+      &::before{
+        color: #FFF;
+        font-size: $mainIndent;
+        line-height: 1;
+        text-align: right;
+      }
+    }
+  }
+  .btn{
+    display: block;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+  }
+  .progress{
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: #000;
+    cursor: pointer;
+    @include border-radius(2px);
+    &::after{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 0;
+      left: 0;
+      top: 0;
+      background: rgba(#FFF,.5);
+    }
+  }
+  .timer{
+    position: absolute;
+    right: $mainIndent/2;
+    top: $mainIndent/1.3333;
+    width: $mainIndent*3;
+    line-height: $mainIndent;
+    font-size: $mainIndent/2;
+  }
+  .show-messages{
+    .message{
+      @extend %visible;
+    }
+  }
+  .message{
+    position: relative;
+    padding: $mainIndent;
+    font-size: 16px;
+    border: 1px solid $successColor;
+    z-index: 1;
+    background: rgba(#FFF,.8);
+    color: $primaryTextColor;
+    @extend %hidden;
+    @extend %transition-normal-speed;
+    &.error{
+      border-color: $errorColor;
+    }
+  }
+/* Helper Classes ======================================================================== */
+  .itm{
+    @extend %inline-block-middle;
   }
 /* Media Queries ========================================================================= */
 /* ======================================================================================= */
