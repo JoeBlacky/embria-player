@@ -13,19 +13,29 @@
   <script src="js/embria.js" defer></script>
 </head>
 <body>
-  <div class="pleer" id="pleer">
-    <div class="itm message error">Ой, что то пошло не так! Попробуйте еще раз.</div>
+  <div class="itm player" id="player">
+    <div class="media" id="media">
+      <img class="itm" src="img/poster.jpg" alt="Movie poster" width="1024" height="624" />
+      <div class="itm message" id="message">Что то пошло не так. Попробуйте перезагрузить страницу.</div>
+    </div>
     <ul class="controls">
-      <li class="itm controls-block controls-play">
-        <button type="button" class="btn icn play" id="play-button"></button>
-        <div class="progress"></div>
-        <div class="timer">
-        <span id="current-time">00:00</span>/02:49
+      <li class="timeline">
+        <div class="progress" id="video-timeline">
+      </li>
+      <li class="itm controls-play">
+        <button type="button" class="itm btn icn play" id="play-button"></button>
+      </li>
+      <li class="itm controls-main">
+        <div class="itm block-timer">
+          <span id="current-time">00:00:00</span>&nbsp;/&nbsp;<span class="total-time">02:51:00</span>
+        </div>
+        <div class="itm block-volume">
+          <button type="button" class="itm btn icn volume"></button>
+          <div class="itm progress" id="volume-control"></div>
         </div>
       </li>
-      <li class="itm controls-block controls-volume">
-        <button type="button" class="btn icn volume"></button>
-        <div class="progress"></div>
+      <li class="itm controls-fullscreen">
+        <button type="button" class="itm btn icn fullscreen" id="full-screen"></button>
       </li>
     </ul>
   </div>

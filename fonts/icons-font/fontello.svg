@@ -7,7 +7,10 @@
 <font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
 <glyph glyph-name="play" unicode="&#xe800;" d="m0-25l0 750 625-375z" horiz-adv-x="625" />
-<glyph glyph-name="volume" unicode="&#xe801;" d="m0 142l0 416 236 0 354 289 0-994-354 289-236 0z m652 35q73 74 73 176t-73 178l71 74q105-106 107-254 0-145-107-246z m118-119q123 119 123 295t-123 299l76 74q154-154 154-372t-154-372z" horiz-adv-x="1000" />
+<glyph glyph-name="pause" unicode="&#xe801;" d="m0-25l0 750 313 0 0-750-313 0z m438 0l0 750 312 0 0-750-312 0z" horiz-adv-x="750" />
+<glyph glyph-name="note" unicode="&#xe802;" d="m381 820q0-42 46-97t90-100 61-119-39-154q-20-34-26-16-2 6 0 16 10 18 6 56t-13 78-43 73-82 41l0-536q2-48-37-95t-105-71q-74-28-143-8t-89 76 20 115 116 85q86 30 158 4l0 652 80 0z" horiz-adv-x="582" />
+<glyph glyph-name="resize-full-alt" unicode="&#xe803;" d="m839 55l72 72 0-224-223 0 72 72-184 185 79 79z m-749 591l-72-72 0 223 223 0-72-72 184-184-79-79z m670 79l-72 72 223 0 0-223-72 72-184-184-79 79z m-407-565l-184-185 72-72-223 0 0 224 72-72 184 184z" horiz-adv-x="928" />
+<glyph glyph-name="resize-small-alt" unicode="&#xe804;" d="m648 88l-72-72 0 223 223 0-72-72 184-185-79-79z m-448 447l-182 183 79 79 183-182 73 70-1-222-222-1z m-182-553l184 185-72 72 223 0 0-223-72 72-184-185z m782 480l-224 0 0 225 73-72 183 182 79-79-183-183z" horiz-adv-x="928" />
 </font>
 </defs>
 </svg>

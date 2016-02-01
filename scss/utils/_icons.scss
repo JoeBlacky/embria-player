@@ -10,11 +10,22 @@
       &::before{
         content: '\E800';
       }
+      &::after{
+        content: '\E801';
+      }
     }
     &.volume{
       &::before{
-        content: '\E801';
+        content: '\E802';
       }
+    }
+    &.fullscreen{
+     &::before{
+        content: '\E803';
+      }
+    }
+    &::after{
+      content: '\E804';
     }
   }
 /* ======================================================================================= */

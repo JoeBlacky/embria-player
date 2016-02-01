@@ -5,14 +5,24 @@
   }
   body{
     background: $primaryDarkColor;
-    color: $primaryColorText;
-    font: 16px/1.5 $primaryFont;
+    color: $primaryTextColor;
+    text-align: center;
+    font-size: 0;
+    font-family: $primaryFont;
+    &::before{
+      content: '';
+      width: 0;
+      height: 100%;
+      @extend %inline-block-middle;
+    }
   }
   img{
     display: block;
     width: 100%;
     max-width: 100%;
     height: auto;
+    max-height: 100%;
+    height: 100%;
   }
   h1,
   h2,
@@ -24,117 +34,152 @@
     text-transform: uppercase;
     color: $primaryTextColor;
   }
-  .pleer{
+/* Common Player ========================================================================= */
+  .player{
     position: relative;
-    height: 100vh;
+    width: 90%;
+    height: 90%;
     min-width: $minWidth;
     min-height: $minWidth;
     margin: 0 auto;
-    background: #FFF;
+    padding: 0 0 $controlsHeight;
     font-size: 0;
-    text-align: center;
-    background: url(../img/poster.jpg) no-repeat center center / contain, #000;
     overflow: hidden;
-    &::before{
-      content: '';
-      width: 0;
-      height: 100%;
-      @extend %inline-block-middle;
-    }
-    &::after{
-      content: '';
-      position: absolute;
-      background: rgba(#FFF, .5);
-      z-index: 0;
-      @extend %overlay;
-      @include custom-transition(background-color, $normalSpeed);
-    }
+    @extend %transition-normal-speed;
+    @include box-shadow(0 0 0 1px #000);
     &.loading{
-      &::after{
-        background: #FFF url(../img/preloader.gif) no-repeat center center;
-      }
-      .controls{
-        opacity: .9;
-        &-play{
-          .progress{
-          &::after{
-              width: 10%;
-              @include custom-transition(width, 3s);
-            }
-          }
+      .media{
+        &::before{
+          @extend %visible;
         }
       }
     }
   }
+  .fullscreen{
+    .player{
+      width: 100%;
+      height: 100%;
+    }
+  }
+/* Player Media Block ==================================================================== */
+  .media{
+    position: relative;
+    height: 100%;
+    white-space: nowrap;
+    &.error{
+      &::before{
+        opacity: .05;
+        background: #FFF url(../img/noise.gif) repeat top right;
+        @extend %visible;
+      }
+      img{
+        @extend %hidden;
+      }
+    }
+    &::before{
+      content: '';
+      background: #FFF #{$ajaxLoader} no-repeat center center;
+      @extend %overlay;
+      @extend %hidden;
+      @extend %transition-normal-speed;
+    }
+  }
+/* Player Controls ======================================================================= */
   .controls{
     position: absolute;
-    height: 50px;
+    height: $controlsHeight;
     width: 100%;
     left: 0;
     bottom: 0;
     z-index: 1;
-    background: #232227;
+    background: $primaryDarkColor;
     @include translate(0,0);
-    @include box-shadow(0 0 0 1px #000);
     @extend %transition-normal-speed;
-    &-block{
+    &-main{
+      width: 100%;
+      padding: 0 $controlsIconWidth + $mainIndent;
+      margin: 0 (-$controlsIconWidth);
+      > .itm{
+        width: 50%;
+      }
+    }
+    #{$iconClass}{
       position: relative;
-      padding: $mainIndent $mainIndent $mainIndent $mainIndent*2;
-    }
-    &-play{
-      width: 70%;
-      padding-right: $mainIndent*4;
-    }
-    &-volume{
-      width: 30%;
-    }
-    .icn{
-      position: absolute;
-      left: $mainIndent/2;
-      top: $mainIndent/1.3333;
-      width: $mainIndent;
-      height: $mainIndent;
+      width: $controlsIconWidth;
+      height: $controlsIconHeight;
       cursor: pointer;
+      text-align: center;
+      color: #FFF;
+      z-index: 1;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      &::before,
+      &::after{
+        width: 100%;
+        @extend %inline-block-middle;
+        @extend %transition-normal-speed;
+      }
       &::before{
-        color: #FFF;
         font-size: $mainIndent;
-        line-height: 1;
-        text-align: right;
+        line-height: $controlsIconHeight;
+      }
+      &::after{
+        margin: 0 0 0 -100%;
+        font-size: 20px;
+        @extend %hidden;
+        @include scale(0);
+      }
+    }
+    .play{
+      border-right-color: $dividerColor;
+    }
+    .fullscreen{
+      border-left-color: $dividerColor;
+    }
+  }
+  #{$iconClass}{
+    &.active{
+      &::before{
+        @extend %hidden;
+        @include scale(2);
+      }
+      &::after{
+        @include scale(1);
+        @extend %visible;
       }
     }
   }
-  .btn{
-    display: block;
+  #{$buttonClass}{
     padding: 0;
     border: 0;
     outline: 0;
     background: transparent;
+    @extend %resetAppearence;
+    @include border-radius(0);
   }
-  .progress{
-    position: relative;
-    width: 100%;
-    height: 10px;
-    background: #000;
-    cursor: pointer;
-    @include border-radius(2px);
-    &::after{
-      content: '';
-      position: absolute;
-      height: 100%;
-      width: 0;
-      left: 0;
-      top: 0;
-      background: rgba(#FFF,.5);
+  .block-timer{
+    font-size: 10px;
+    text-align: left;
+  }
+  .block-volume{
+    text-align: right;
+    .progress{
+      width: 150px;
+    }
+    #{$iconClass}{
+      cursor: default;
     }
   }
-  .timer{
-    position: absolute;
-    right: $mainIndent/2;
-    top: $mainIndent/1.3333;
-    width: $mainIndent*3;
-    line-height: $mainIndent;
-    font-size: $mainIndent/2;
+  .total-time{
+    color: $secondaryTextColor;
   }
+  .progress{
+    height: $timeLineHeight;
+    width: 100%;
+    background: $errorColor;
+    cursor: pointer;
+  }
+/* Messages ============================================================================== */
   .show-messages{
     .message{
       @extend %visible;
@@ -142,16 +187,18 @@
   }
   .message{
     position: relative;
+    width: 100%;
+    margin: 0 0 0 -100%;
     padding: $mainIndent;
-    font-size: 16px;
-    border: 1px solid $successColor;
-    z-index: 1;
-    background: rgba(#FFF,.8);
+    font: 700 20px/1.5 $headingsFont;
+    letter-spacing: 1px;
     color: $primaryTextColor;
+    text-transform: uppercase;
+    white-space: normal;
     @extend %hidden;
     @extend %transition-normal-speed;
-    &.error{
-      border-color: $errorColor;
+    &.active{
+      @extend %visible;
     }
   }
 /* Helper Classes ======================================================================== */
@@ -159,4 +206,23 @@
     @extend %inline-block-middle;
   }
 /* Media Queries ========================================================================= */
+  @media screen and (max-width: 600px){
+    .controls{
+      &-main{
+        padding: 0 $controlsIconWidth + $mainIndent/2;
+      }
+    }
+    .block-volume{
+      #{$iconClass}{
+        width: $mainIndent;
+        margin: 0 $mainIndent/2 0 0;
+      }
+      .progress{
+        width: 70px;
+      }
+    }
+    .message{
+      font-size: 14px;
+    }
+  }
 /* ======================================================================================= */
